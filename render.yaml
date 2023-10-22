@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: rs-geolocator
+    runtime: python
+    buildCommand: "./build.sh"
+    startCommand: "gunicorn project.wsgi:application"
+    envVars:
+      - key: "djahjib=#_4udlqeu#j9b#ur84&bk&ikh4*hx2bk*d+ytbn26m2z9)h="
+        generateValue: true
+      - key: WEB_CONCURRENCY
+        value: 4
