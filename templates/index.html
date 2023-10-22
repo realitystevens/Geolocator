@@ -13,7 +13,9 @@
     <title>Geolocator</title>
     <link rel="stylesheet" href="{% static 'style.css' %}">
     <script src="{% static 'script.js' %}"></script>
-    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="body">
@@ -72,6 +74,163 @@
             </div>
         </div>
     </div>
+
+
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        :root {
+            --black: #1e1e1e;
+        }
+
+        body {
+            font-family: 'Inter', 'Roboto', sans-serif;
+            color: var(--black);
+            font-style: normal;
+            line-height: normal;
+        }
+
+        .main {
+            padding: 50px 25px;
+        }
+
+        .color_theme {
+            text-align: right;
+            margin: 0px 5px 25px 0px;
+        }
+
+        .theme_mode {
+            border: 0px;
+            background-color: transparent; 
+        }
+
+        .__title {
+            text-align: center;
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .__title_g {
+            background: linear-gradient(90deg, #4CAF50 13.67%, #FF5722 91.39%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .__desc {
+            color: #AFAFAF;
+            text-align: center;
+            font-size: 12px;
+            font-weight: 400;
+            align-self: stretch;
+        }
+
+        .form {
+            text-align: center;
+            margin: 48px 0px 0px 0px;
+        }
+
+        .geo_input_content {
+            border-radius: 15px;
+            background: #030303;
+            align-self: stretch;
+            margin: 0px 0px 31px 0px;
+            height: 110px;
+            position: relative;
+        }
+
+
+        .input_text {
+            margin: 13px;
+            padding: 10px;
+            color: #fff;
+            border: 0px;
+            border-radius: 10px; 
+            background: #2A2A2C;
+            font-family: 'Inter', 'Roboto', sans-serif;
+        }
+
+        .cl_wrapper {
+            font-size: 12px;  
+            font-weight: 400;
+            border-radius: 10px;
+            background: #FF5722;
+            padding: 5px 12px;
+
+        }
+
+        .current_location {
+            color: #FFF;
+            text-align: center;    
+        }
+
+        .btn {
+            font-size: 16px;
+            border-radius: 30px;
+            border: 10px solid #E8E8E8;
+            padding: 10px 10px 11px 10px;
+            color: #fff;
+            font-family: 'Inter', 'Roboto', sans-serif;
+            background: #4CAF50;
+            width: 170px;
+        }
+
+        .rocket_svg {
+            margin: 0px 0px -4px 10px;
+            height: 18px;
+        }
+
+        .result {
+            border: 25px #E8E8E8 solid;
+            border-radius: 15px;
+            margin: 45px 0px 0px 0px;
+            background-color: #E8E8E8; 
+            text-align: left;
+        }
+
+        .result_wrapper {
+            border-radius: 15px;
+            padding: 35px 24px;
+            color: #2A2A2C;
+            font-size: 15px;
+            background-color: #fff;
+        }
+
+
+        @media only screen and (min-width: 600px) {
+        .main {
+            padding: 60px 55px;
+        }
+        }
+
+        @media only screen and (min-width: 700px) {
+        .main {
+            padding: 60px 75px;
+        }
+        }
+
+        @media only screen and (min-width: 750px) {
+        .main {
+            padding: 60px 85px;
+        }
+        }
+
+        @media only screen and (min-width: 820px) {
+        .__content {
+            max-width: 750px;
+            margin: 0px auto;
+        }
+
+        .color_theme {
+            text-align: right;
+            margin: 0px -70px 25px 0px;
+            }
+        }
+    </style>
     
 </body>
 </html>
