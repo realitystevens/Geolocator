@@ -3,8 +3,6 @@ from pathlib import Path
 from django.core.management.utils import get_random_secret_key
 
 
-
-
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = os.environ.get('SECRET_KEY', get_random_secret_key())
@@ -93,8 +91,8 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 STATICFILES_DIRS = [
     BASE_DIR / "static",
+    '/var/www/static/',
 ]
-
 
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
