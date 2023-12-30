@@ -1,13 +1,16 @@
 import os
 from pathlib import Path
+from dotenv import load_dotenv
 from django.core.management.utils import get_random_secret_key
 
+
+load_dotenv()
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = os.environ.get('SECRET_KEY', get_random_secret_key())
 
-DEBUG = os.environ.get('DEBUG', 'False').lower() == 'true'
+DEBUG = os.environ.get('DEBUG', 'False')
 
 ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', ['*'])
 
@@ -87,11 +90,11 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static_assets')
 
-# STATICFILES_DIRS = [
-#     os.path.join(BASE_DIR, 'assets/static'),
-# ]
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),
+]
 
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
