@@ -1,30 +1,31 @@
-from django.shortcuts import render
-from django.http import HttpResponse
-from geopy.geocoders import Bing
-import geopy
 import os
+import requests
 from dotenv import load_dotenv
-
+from json import JSONDecodeError
+from django.http import JsonResponse
+from django.http import HttpResponse
+from django.shortcuts import render
 
 load_dotenv()
-
-
-"""
-    Read more about the geopy library here: https://geopy.readthedocs.io/en/stable/
-"""
 
 
 def index(request):
 
     if request.method == 'POST':
-        address = request.POST.get('address')
-       
-        geolocator = Bing(os.environ.get('BINGMAP_API_KEY'), user_agent="http")
+        query = request.POST.get('query')
+        BING_MAPS_KEY = os.environ.get('BING_MAPS_KEY')
 
-        location = geolocator.geocode(address)
+        url = f'https://dev.virtualearth.net/REST/v1/Locations?query={query}&key={BING_MAPS_KEY}&maxResults=1'
+
+        response = requests.get(url)
+
+        try:
+            data = response.json()
+        except JSONDecodeError:
+            data = {'error': 'The API response is not in JSON format'}
 
         context = {
-            'location': location,
+            'data': data,
         }
 
         return render(request, 'index.html', context)

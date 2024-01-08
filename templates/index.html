@@ -5,11 +5,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Get useful Geographical information about your locations such as postal code, city, stat, country, latitude, longitude, e.t.c">
+    <meta name="description" content="Get useful Geographical information about your location.">
     <meta property="og:title" content="Geolocator - Find Geographical information about your location">
     <meta property="og:url" content="https://geolocator.realitystevens.me/">
     <meta property="og:type" content="website">
-    <meta property="og:description" content="Get useful Geographical information about your locations such as postal code, city, stat, country, latitude, longitude, e.t.c">    
+    <meta property="og:description" content="Get useful Geographical information about your location.">    
     <title>Geolocator - Find useful Geographical information about your location</title>
     <link rel="stylesheet" href="{% static 'style.css' %}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -65,14 +65,14 @@
 
                         <h1 class="__title">Find your <br> <span class="__title_g">geolocation</span></h1>
 
-                        <p class="__desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum, quibusdam.</p>                  
+                        <p class="__desc">Fill in your address location and get all the Geographical information of the location.</p>                  
 
                         <form action="" method="POST" class="form">
 
                             <div class="geo_input_content">
 
                                 {% csrf_token %}
-                                <input class="input_text" autocomplete="off" type="text" placeholder="Write location" name="location" id="input_text">
+                                <input class="input_text" autocomplete="off" type="text" placeholder="Write location" name="query" id="input_text">
 
                                 <div class="current_location" id="current_location">
                                     <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -97,7 +97,11 @@
 
                         <div class="result" id="result">
                             <div class="result_wrapper" id="result_wrapper">
-                                {{ location.raw }}
+                                {% if data.error %}
+                                    <p>Error: {{data.error}}</p>
+                                {% else %}
+                                    <p>{{data}}</p>
+                                {% endif %}
                             </div>
                         </div>
 
