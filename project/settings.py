@@ -98,3 +98,5 @@ STATICFILES_DIRS = [
 
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+BINGMAPS_APIKEY = os.environ.get('BINGMAPS_APIKEY')
