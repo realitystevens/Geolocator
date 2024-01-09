@@ -1,6 +1,7 @@
 * {
     margin: 0px;
     padding: 0px;
+    box-sizing: border-box;
 }
 
 :root {
@@ -128,16 +129,32 @@ body {
     margin: 45px 0px 0px 0px;
     background-color: var(--gray); 
     text-align: left;
+    display: inline-block;
+    max-width: 100%;
+    width: 100%;
 }
 
 .result_wrapper {
     border-radius: 15px;
     padding: 35px 24px;
     color: #2A2A2C;
-    font-size: 15px;
+    font-size: 13px;
     background-color: #fff;
 }
 
+.builders {
+    text-align: center;
+    color: #AFAFAF;
+    font-size: 12px;
+    font-weight: 500;
+    align-self: stretch;
+    margin-top: 45px;
+}
+
+.builders a {
+    color: #4CAF50;
+    text-decoration: none;
+}
 
 
 /* Darktheme Mode */

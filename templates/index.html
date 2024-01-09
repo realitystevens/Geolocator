@@ -97,14 +97,14 @@
 
                         <div class="result" id="result">
                             <div class="result_wrapper" id="result_wrapper">
-                                {% if data.error %}
-                                    <p>Error: {{data.error}}</p>
-                                {% else %}
-                                    <p>{{data}}</p>
-                                {% endif %}
+                                {{ data.resourceSets}}
+                                <br><br><br>
+                                <p>{{ data.copyright }}</p>
                             </div>
                         </div>
 
+                        <p class="builders">Built by <a href="https://contra.com/chizorommaduba" target="_blank" rel="noopener noreferrer">Chizorum Maduba</a> and <a href="http://linkedin.com/in/stevensreality" target="_blank" rel="noopener noreferrer">Reality Stevens</a></p>
+                     
                     </div>
                 </main>
             </div>
