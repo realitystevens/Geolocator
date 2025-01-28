@@ -1,5 +1,3 @@
-{% load static %}
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,13 +8,15 @@
     <meta property="og:image" content="https://res.cloudinary.com/realitystevens/image/upload/v1705590002/geolocator_og_image.png">
     <meta property="og:url" content="https://geolocator.realitystevens.me/">
     <meta property="og:type" content="website">
-    <meta property="og:description" content="Get useful Geographical information about your location.">    
+    <meta property="og:description" content="Get useful Geographical information about your location.">
+    <link rel="shortcut icon" href="https://res.cloudinary.com/realitystevens/image/upload/v1702429271/geolocator_project_favicon.png" type="image/x-icon"> 
     <title>Geolocator - Find useful Geographical information about your location</title>
-    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css')}}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="shortcut icon" href="https://res.cloudinary.com/realitystevens/image/upload/v1702429271/geolocator_project_favicon.png" type="image/x-icon">
+    <script defer src="{{ url_for('static', filename='form.js') }}"></script>
+    <script defer src="{{ url_for('static', filename='changetheme.js') }}"></script>
 </head>
 <body>
     <div class="body">
@@ -69,12 +69,9 @@
                         <p class="__desc">Fill in your address location and get all the Geographical information of the location.</p>                  
 
                         <form action="" method="POST" class="form">
-
                             <div class="geo_input_content">
-
-                                {% csrf_token %}
-                                <input class="input_text" autocomplete="off" type="text" placeholder="Write location" name="query" id="input_text">
-
+                                {{ form.hidden_tag() }}
+                                {{ form.address() }}
                                 <div class="current_location" id="current_location">
                                     <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M3.40841 2.66468C4.36096 1.71214 5.65289 1.177 7 1.177C8.3471 1.177 9.63903 1.71214 10.5916 2.66468C11.5441 3.61723 12.0793 4.90916 12.0793 6.25627C12.0793 7.60337 11.5441 8.8953 10.5916 9.84785L9.89916 10.5327C9.38874 11.0332 8.72666 11.6772 7.91233 12.4647C7.66758 12.7013 7.34045 12.8336 7 12.8336C6.65954 12.8336 6.33241 12.7013 6.08766 12.4647L4.05125 10.4837C3.79458 10.2323 3.58108 10.0205 3.40841 9.84785C2.93674 9.37621 2.56258 8.81628 2.30731 8.20003C2.05204 7.58379 1.92065 6.92329 1.92065 6.25627C1.92065 5.58924 2.05204 4.92875 2.30731 4.3125C2.56258 3.69626 2.93674 3.13633 3.40841 2.66468ZM9.97266 3.28302C9.58221 2.8926 9.11868 2.58292 8.60855 2.37164C8.09841 2.16036 7.55165 2.05164 6.9995 2.05166C6.44734 2.05169 5.9006 2.16047 5.39048 2.3718C4.88037 
@@ -84,34 +81,29 @@
                                     </svg>                                    
                                     Use current location
                                 </div>
-
                             </div>
-                         
-                            <button id="action_btn" disabled class="btn">
-                                Let's go
-                                <svg class="rocket_svg" xmlns="http://www.w3.org/2000/svg" width="15" height="16" viewBox="0 0 15 16" fill="none">
-                                    <path d="M12.5643 12.9684L12.5643 12.9684L9.45729 15.4951L12.5643 12.9684ZM12.5643 12.9684C12.6702 12.8821 12.7549 12.7727 12.8119 12.6486C12.8689 12.5244 12.8967 12.3889 12.8932 12.2523L12.8115 9.04564C14.957 5.94526 14.2837 2.41575 14.0538 1.49184C14.0062 1.29948 13.8961 1.12838 13.7406 1.00546C13.5852 0.882538 13.3933 0.814761 13.1951 0.812785C12.2431 0.802069 8.65346 0.960306 6.13102 3.76261L2.99182 4.42213C2.85813 4.45016 2.73264 4.50845 2.625 4.59253C2.51735 4.67662 2.43041 4.78426 2.37085 4.90719L2.37083 4.90724L0.628738 8.51336C0.628721 8.5134 0.628705 8.51343 0.628687 8.51347C0.562004 8.64985 0.531456 8.80108 0.539968 8.95266C0.54848 9.10424 0.595768 9.25109 0.6773 9.37915M12.5643 12.9684L8.33833 15.5031M8.33833 15.5031L8.33818 15.503C8.18069 15.3782 8.07006 15.2039 8.0243 15.0083L7.39851 12.6084L3.91167 9.85099L1.43274 9.79557C1.23187 9.79611 1.03672 9.72865 0.879061 9.60415L0.878905 9.60403C0.799592 9.54088 0.731442 9.46487 0.6773 9.37915M8.33833 15.5031C8.41808 15.5657 8.50777 15.6145 8.60368 15.6475C8.74707 15.6973 8.90084 15.7094 9.05028 15.6828C9.1997 15.6561 9.33978 15.5916 9.45711 15.4953L8.33833 15.5031ZM0.6773 9.37915C0.677322 9.37919 0.677343 9.37922 0.677365 9.37926L0.719538 9.3524L0.677264 9.3791C0.677276 9.37912 0.677288 9.37913 0.6773 9.37915ZM13.4127 1.64939L13.4128 1.64966C13.5683 2.27208 13.9379 4.162 13.3724 6.25081C12.8091 8.33134 11.3171 10.6142 7.74699 12.0394L4.38508 9.38074C4.94912 5.57827 6.82664 3.60027 8.72135 2.57269C10.6236 1.54101 12.5478 1.46504 13.1893 1.47295L13.1896 1.47295C13.2411 1.4733 13.2911 1.49085 13.3315 1.52281C13.3719 1.55478 13.4005 1.59933 13.4127 1.64939ZM3.12944 5.06796L3.12946 5.06796L5.48732 4.57101C4.68234 5.72529 4.04925 7.22835 3.74611 9.18468L1.44325 9.1334L1.44254 9.1334L1.43453 9.13333L1.43376 9.13333C1.39442 9.13361 1.35566 9.12385 1.32115 9.10498C1.28663 9.0861 1.25751 9.05873 1.23652 9.02546C1.21553 8.99218 1.20338 8.95411 1.20121 8.91483C1.19905 8.87555 1.20694 8.83636 1.22414 8.80098L1.22418 8.80089L2.96879 5.19377L2.9688 5.19373C2.98418 5.16188 3.00665 5.13398 3.0345 5.11217C3.06235 5.09037 3.09483 5.07524 3.12944 5.06796ZM12.233 12.2672L12.2331 12.2679C12.2344 12.3033 12.2276 12.3386 12.2131 12.371C12.1986 12.4033 12.1769 12.4318 12.1497 12.4544C12.1497 12.4545 12.1496 12.4546 12.1495 12.4546L9.04192 14.9833L9.04184 14.9834C9.01138 15.0083 8.97507 15.025 8.93635 15.0319C8.89763 15.0389 8.85777 15.0358 8.82056 15.0231C8.78334 15.0103 8.75 14.9883 8.72368 14.959C8.69735 14.9298 8.67892 14.8943 8.67013 14.856L8.66995 14.8552L8.66805 14.8475L8.66787 14.8468L8.08723 12.6177C9.92087 11.8719 11.2375 10.9095 12.1732 9.85868L12.233 12.2672ZM5.38575 13.7616C5.47301 13.7514 5.55264 13.7069 5.60714 13.638C5.66163 13.5691 5.68652 13.4814 5.67633 13.3941C5.66614 13.3069 5.6217 13.2272 5.55279 13.1727L3.78796 11.7771C3.71905 11.7226 3.63131 11.6977 3.54405 11.7079C3.45679 11.7181 3.37716 11.7625 3.32266 11.8314C3.26817 11.9003 3.24328 11.9881 3.25347 12.0753C3.26366 12.1626 3.3081 12.2422 3.37701 12.2967L5.14184 13.6924C5.21075 13.7469 5.29849 13.7718 5.38575 13.7616ZM9.49316 6.37643C9.58818 6.45157 9.70335 6.49685 9.8241 6.50654C9.94485 6.51623 10.0658 6.48989 10.1716 6.43086C10.2773 6.37183 10.3632 6.28275 10.4184 6.1749C10.4736 6.06705 10.4955 5.94526 10.4815 5.82494C10.4674 5.70461 10.418 5.59116 10.3394 5.49892C10.2609 5.40669 10.1568 5.33981 10.0402 5.30675C9.9237 5.27369 9.79998 5.27593 9.68471 5.31319C9.56944 5.35045 9.4678 5.42105 9.39266 5.51607C9.2919 5.64349 9.24588 5.80571 9.26472 5.96706C9.28357 6.12841 9.36574 6.27566 9.49316 6.37643Z" fill="white" stroke="white" stroke-width="0.1"/>
-                                </svg>
-                            </button>                            
-
+                            {{ form.submit() }}
+                            {% if form.address.errors %}
+                            <div class="text-danger">
+                                {% for error in form.address.errors %}
+                                    <p>{{ error }}</p>
+                                {% endfor %}
+                            </div>
+                            {% endif %}
                         </form>
 
                         <div class="result" id="result">
                             <div class="result_wrapper" id="result_wrapper">
                                 {{ data }}
+                                {{ error }}
                             </div>
                         </div>
 
                         <p class="builders">Built by <a href="https://contra.com/chizorom_maduba" target="_blank" rel="noopener noreferrer">Chizorom Maduba</a> and <a href="http://github.com/realitystevens" target="_blank" rel="noopener noreferrer">Reality Stevens</a></p>
-                     
                     </div>
                 </main>
             </div>
         </div>
     </div>
-
-    <script src="{% static 'form.js' %}"></script>
-    <script src="{% static 'changetheme.js' %}"></script>
-    
 </body>
 </html>
