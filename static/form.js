@@ -1,12 +1,12 @@
-const inputText = document.getElementById('input_text')
-const actionBtn = document.getElementById('action_btn')
+(function() {
+    const inputText = document.getElementById('input_text');
+    const actionBtn = document.getElementById('action_btn');
 
+    inputText.addEventListener("input", function() {
+        actionBtn.disabled = false; 
 
-
-inputText.addEventListener("input", function() {
-    actionBtn.disabled = false; 
-
-    if (inputText.value === '') {
-        actionBtn.disabled = true; 
-    }
-});
+        if (inputText.value === '') {
+            actionBtn.disabled = true; 
+        }
+    });
+})();
