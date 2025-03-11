@@ -15,9 +15,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <script defer src="{{ url_for('static', filename='form.js') }}"></script>
-    <script defer src="{{ url_for('static', filename='changeTheme.js') }}"></script>
-    <script defer src="{{ url_for('static', filename='getCurrentLocation.js') }}"></script>
+    <script defer type="module" src="{{ url_for('static', filename='form.js') }}"></script>
+    <script async type="module" src="{{ url_for('static', filename='changeTheme.js') }}"></script>
+    <script defer type="module" src="{{ url_for('static', filename='getCurrentLocation.js') }}"></script>
+    <script async src="{{ url_for('static', filename='serviceWorker.js') }}"></script>
 </head>
 <body>
     <div class="body">
@@ -104,7 +105,13 @@
                             </div>
                         </div>
 
-                        <p class="builders">UI/UX by <a href="https://x.com/chizorommaduba" target="_blank" rel="noopener noreferrer">Chizorom Maduba</a>. Code base written by <a href="https://x.com/realitystevens" target="_blank" rel="noopener noreferrer">Reality Stevens</a>. Check repository to codebase on Github <a href="http://github.com/realitystevens/Geolocator" target="_blank" rel="noopener noreferrer">here</a>.</p>
+                        <p class="builders">
+                            UI/UX by 
+                            <a href="https://x.com/chizorommaduba" target="_blank" rel="noopener noreferrer">Chizorom Maduba</a>.
+                            Code base written by <a href="https://x.com/realitystevens" target="_blank" rel="noopener noreferrer">Reality Stevens</a>.
+                            <br>
+                            Check repository to codebase on Github <a href="http://github.com/realitystevens/Geolocator" target="_blank" rel="noopener noreferrer">here</a>.
+                        </p>
                     </div>
                 </main>
             </div>
