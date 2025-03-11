@@ -89,7 +89,8 @@ body {
     color: #FFF;
     text-align: right;     
     width: fit-content; 
-    justify-self: flex-end;  
+    justify-self: flex-end;
+    cursor: pointer;
 }
 
 .current_location svg {
