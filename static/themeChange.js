@@ -7,9 +7,7 @@ const darkthemeicon = document.querySelector('.dark-theme-icon');
 const lightthemeicon = document.querySelector('.light-theme-icon');
 
 
-```
-Function to toggle dark mode
-```    
+// Function to toggle dark mode 
 const toggleDarkMode = () => {
     const isDarkMode = body.classList.toggle('dark_mode');
 
@@ -29,9 +27,7 @@ const toggleDarkMode = () => {
 };
 
 
-```
-Check the saved preference and apply dark mode if previously enabled
-```
+// Check the saved preference and apply dark mode if previously enabled
 const savedDarkMode = localStorage.getItem('darkMode');
 if (savedDarkMode === 'enabled') {
     body.classList.add('dark_mode');
@@ -45,8 +41,5 @@ if (savedDarkMode === 'enabled') {
     darkthemeicon.style.display = 'block';
 }
 
-
-```
-Make function globally accessible
-```
+// Make function globally accessible
 window.toggleDarkMode = toggleDarkMode;

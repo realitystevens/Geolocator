@@ -2,9 +2,7 @@ import { inputText, actionBtn } from "./form.js";
 
 
 
-```
-Function to get the current location of the user
-```
+// Function to get the current location of the user
 const getCurrentLocation = () => {
     if ("geolocation" in navigator) {
         navigator.geolocation.getCurrentPosition(
@@ -30,7 +28,5 @@ const getCurrentLocation = () => {
 };
 
 
-```
-Make function globally accessible
-```
+// Make function globally accessible
 window.getCurrentLocation = getCurrentLocation;

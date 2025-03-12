@@ -29,6 +29,7 @@ body {
 .theme_mode {
     border: 0px;
     background-color: transparent; 
+    cursor: pointer;
 }
 
 .__title {
